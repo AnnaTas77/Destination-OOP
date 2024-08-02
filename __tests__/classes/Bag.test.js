@@ -1,6 +1,6 @@
+const { describe, it, test, expect } = require("@jest/globals");
 const Bag = require("../../classes/Bag");
 const Person = require("../../classes/Person");
-const { describe, it, test, expect } = require("@jest/globals");
 
 describe("Bag Class", () => {
   test("can create an instance of the Bag class", () => {
@@ -25,5 +25,14 @@ describe("Bag Class", () => {
     expect(bag1.getOwner()).toBe("Maria");
   });
 
-  test("can update owner with a Person assigned to a Bag using assignOwner()", () => {});
+  test("can update owner with a Person assigned to a Bag using assignOwner()", () => {
+    const bag1 = new Bag("123", 500);
+    const person1 = new Person("Anna", "London");
+    bag1.assignOwner(person1);
+    const assignedPerson = bag1.getOwner();
+
+    expect(assignedPerson).toBeInstanceOf(Person);
+    expect(assignedPerson.name).toBe("Anna");
+    expect(assignedPerson.destination).toBe("London");
+  });
 });
